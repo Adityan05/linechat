@@ -6,8 +6,9 @@ const ProfileCard = ({ username, setUsername }) => {
     <div className="hero bg-base-200">
       <div className="hero-content text-center">
         <div className="max-w-md">
-          <h1 className="text-5xl font-bold">Line Chat</h1>
-          <p className="py-6">
+          {/* <h1 className="text-5xl font-bold">Line Chat</h1> */}
+          <img src="/LineChat-MainLogo.png" alt="Line Chat Main Logo" />
+          <p className="mb-4 font-bold text-md">
             Create Chat Rooms and enjoy chatting with your People
           </p>
           <div className="aura aura-silver mb-3">
