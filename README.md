@@ -26,7 +26,7 @@ Readme · MD
 ## 📸 Screenshots
  
 <p align="center">
-  <img src="https://i.ibb.co/S4yBmGDp/Screenshot-2026-07-17-103356.png" alt="LineChat screenshot 2" width="45%"/>
+  <img src="https://i.ibb.co/XxWcDQtm/image.png" alt="LineChat screenshot 2" width="45%"/>
   &nbsp;&nbsp;
   <img src="https://i.ibb.co/nsRcYjyH/Screenshot-2026-07-17-103638.png" alt="LineChat screenshot 1" width="45%"/>
 </p>
