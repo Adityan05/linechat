@@ -38,6 +38,25 @@ const ChatPage = ({ roomId, username, onLeave }) => {
     onLeave();
   };
 
+  const bubbleColors = [
+    "chat-bubble-primary",
+    "chat-bubble-secondary",
+    "chat-bubble-accent",
+    "chat-bubble-neutral",
+    "chat-bubble-info",
+    "chat-bubble-success",
+    "chat-bubble-warning",
+    "chat-bubble-error",
+  ];
+
+  function getBubbleColor(name) {
+    let hash = 0;
+    for (let i = 0; i < name.length; i++) {
+      hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    return bubbleColors[Math.abs(hash) % bubbleColors.length];
+  }
+
   return (
     <div className="hero bg-base-300 min-h-screen">
       <div className="hero-content text-center flex-col w-full max-w-2xl">
@@ -51,14 +70,23 @@ const ChatPage = ({ roomId, username, onLeave }) => {
         <div className="bg-base-100 rounded-box p-4 w-full h-96 overflow-y-auto text-left">
           {messages.map((m, i) =>
             m.type === "system" ? (
-              <p key={i} className="italic text-gray-400">
+              <p
+                key={i}
+                className="italic text-gray-400 text-center text-sm my-1"
+              >
                 {m.message}
               </p>
             ) : (
-              <p key={i}>
-                <b>{m.username}:</b> {m.message}
-              </p>
-            )
+              <div
+                key={i}
+                className={`chat ${m.username === username ? "chat-end" : "chat-start"}`}
+              >
+                <div className="chat-header">{m.username}</div>
+                <div className={`chat-bubble ${getBubbleColor(m.username)}`}>
+                  {m.message}
+                </div>
+              </div>
+            ),
           )}
           <div ref={bottomRef} />
         </div>
@@ -71,7 +99,10 @@ const ChatPage = ({ roomId, username, onLeave }) => {
             onKeyDown={(e) => e.key === "Enter" && sendMessage()}
             placeholder="Type a message..."
           />
-          <button className="btn btn-soft btn-accent join-item" onClick={sendMessage}>
+          <button
+            className="btn btn-soft btn-accent join-item"
+            onClick={sendMessage}
+          >
             Send
           </button>
         </div>
